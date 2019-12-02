@@ -1,4 +1,4 @@
-[
+/*[
 	{
 		"id": "SideBarTools", "caption": "-"
 	},
@@ -32,4 +32,29 @@
 		"command": "side_bar_compare",
 		"args": { "paths": [] }
 	}
+]*/
+[
+	{
+		"id": "SideBarTools", "caption": "-"
+	},
+    {
+        "caption": "Duplicate…",
+        "command": "side_bar_duplicate",
+        "args": { "paths": [] }
+    },
+    {
+        "caption": "Copy Absolute Path",
+        "command": "side_bar_copy_absolute_path",
+        "args": { "paths": [] }
+    },
+    {
+        "caption": "Open in Shell",
+        "command": "side_bar_shell",
+        "args": { "paths": [] }
+    },
+    {
+        "caption": "Open in Git Shell",
+        "command": "side_bar_git_shell",
+        "args": { "paths": [] }
+    },
 ]
