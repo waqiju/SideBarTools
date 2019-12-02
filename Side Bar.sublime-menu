@@ -34,6 +34,11 @@
 	}
 ]*/
 [
+    {
+        "caption": "Open Folder",
+        "command": "side_bar_open_folder",
+        "args": { "paths": [] }
+    },
 	{
 		"id": "SideBarTools", "caption": "-"
 	},

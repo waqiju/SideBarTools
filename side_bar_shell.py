@@ -41,5 +41,18 @@ class SideBarGitShellCommand(SideBarShellCommand):
         return 'Open in Git Shell'
 
 
+class SideBarOpenFolderCommand(SideBarCommand):
+
+    def is_visible(self, paths):
+        return len(paths) == 1 and os.path.isdir(paths[0])
+
+    def run(self, paths):
+        folder = self.get_path(paths)
+        self.window.run_command("open_dir", {"dir": folder})
+
+    def description(self):
+        return 'Open Folder'
+
+
 if __name__ == '__main__':
     run_shell('start')

@@ -126,6 +126,9 @@ class SideBarCopyRelativePathCommand(MultipleFilesMixin, SideBarCommand):
 
 class SideBarDuplicateCommand(SideBarCommand):
 
+    def is_visible(self, paths):
+        return len(paths) == 1 and os.path.isfile(paths[0])
+
     def run(self, paths):
         source = self.get_path(paths)
         base, leaf = os.path.split(source)
