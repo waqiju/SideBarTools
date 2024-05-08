@@ -57,9 +57,16 @@
         "command": "side_bar_shell",
         "args": { "paths": [] }
     },
+    /*
     {
         "caption": "Open in Git Shell",
         "command": "side_bar_git_shell",
+        "args": { "paths": [] }
+    },
+    */
+    {
+        "caption": "Open in PowerShell",
+        "command": "side_bar_power_shell",
         "args": { "paths": [] }
     },
 ]

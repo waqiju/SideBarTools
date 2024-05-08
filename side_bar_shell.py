@@ -41,6 +41,16 @@ class SideBarGitShellCommand(SideBarShellCommand):
         return 'Open in Git Shell'
 
 
+class SideBarPowerShellCommand(SideBarShellCommand):
+
+    def run(self, paths):
+        folder = self.get_folder(paths)
+        run_shell('start powershell', cwd=folder)
+
+    def description(self):
+        return 'Open in PowerShell'
+
+
 class SideBarOpenFolderCommand(SideBarCommand):
 
     def is_visible(self, paths):
