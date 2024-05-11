@@ -45,7 +45,27 @@ class SideBarPowerShellCommand(SideBarShellCommand):
 
     def run(self, paths):
         folder = self.get_folder(paths)
-        run_shell('start powershell', cwd=folder)
+        os.environ['NO_THEME'] = '1'
+        # 尝试检查是否存在 pwsh
+        if self.check_command_exists("pwsh"):
+            run_shell('start pwsh', cwd=folder)
+        else:
+            run_shell('start powershell', cwd=folder)
+
+    def check_command_exists(self, command):
+        """检查系统是否有指定的命令"""
+        try:
+            # 设置启动信息以隐藏窗口
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = subprocess.SW_HIDE
+
+            # 执行命令并获取版本信息，不显示窗口
+            proc = subprocess.Popen([command, '--version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, startupinfo=startupinfo)
+            proc.communicate()  # 等待命令执行完成
+            return proc.returncode == 0
+        except FileNotFoundError:
+            return False
 
     def description(self):
         return 'Open in PowerShell'
