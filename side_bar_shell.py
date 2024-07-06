@@ -45,7 +45,6 @@ class SideBarPowerShellCommand(SideBarShellCommand):
 
     def run(self, paths):
         folder = self.get_folder(paths)
-        os.environ['NO_THEME'] = '1'
         # 尝试检查是否存在 pwsh
         if self.check_command_exists("pwsh"):
             run_shell('start pwsh', cwd=folder)
