@@ -70,6 +70,20 @@ class SideBarPowerShellCommand(SideBarShellCommand):
         return 'Open in PowerShell'
 
 
+class OpenCurrentFileInPowerShellCommand(sublime_plugin.TextCommand):
+
+    def run(self, edit):
+        # 获取当前活动文件的路径
+        if self.view and self.view.file_name():
+            file_path = self.view.file_name()
+            # 调用原有命令并传递路径
+            self.view.window().run_command("side_bar_power_shell", {
+                "paths": [file_path]
+            })
+        else:
+            sublime.status_message("Error: No file is open")
+
+
 class SideBarOpenFolderCommand(SideBarCommand):
 
     def is_visible(self, paths):
